@@ -1,3 +1,5 @@
+import { fetch } from 'undici';
+
 export default async function handler(req, res) {
   const { message } = req.body;
 
@@ -13,11 +15,11 @@ export default async function handler(req, res) {
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: "gpt-4",
+        model: "gpt-4", // або "gpt-3.5-turbo"
         messages: [
           {
             role: "system",
-            content: "Du bist ein hilfreicher Erklärbot für den Leben in Deutschland- oder Einbürgerungstest. Erkläre verständlich und kompakt, warum die Antwort auf die Frage richtig ist. Antworte in der Sprache des Nutzers."
+            content: "Du bist ein hilfreicher Erklär-Bot für den Einbürgerungstest. Erkläre kurz und verständlich, warum die Antwort richtig ist."
           },
           {
             role: "user",
